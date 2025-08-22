@@ -1687,15 +1687,23 @@ TEST(TestContractNostromo, createFundraisingAndInvestInProjectAndClaimTokenCheck
     utcTime.Hour = 0;
     updateQpiTime();
 
+    std::cout << "reached line " << __LINE__ << std::endl;
+
     originalCreatorBalance = getBalance(registers[0]);
     EXPECT_EQ(originalSCBalance + totalInvestedAmount_3, getBalance(id(NOST_CONTRACT_INDEX, 0, 0, 0)));
+
+    std::cout << "reached line " << __LINE__ << std::endl;
 
     uint64 epochRevenue = nostromoTestCaseC.getState()->getEpochRevenue();
     uint64 teamFee = div(epochRevenue, 10ULL);
     epochRevenue -= teamFee;
     nostromoTestCaseC.endEpoch();
 
+    std::cout << "reached line " << __LINE__ << std::endl;
+
     EXPECT_EQ(originalSCBalance + totalInvestedAmount_3 - teamFee - (div(epochRevenue, 676ULL) * 676), getBalance(id(NOST_CONTRACT_INDEX, 0, 0, 0)));
     nostromoTestCaseC.getState()->endEpochFailedFundraisingChecker(2);
+    std::cout << "reached line " << __LINE__ << std::endl;
     nostromoTestCaseC.getState()->endEpochVoteStatusClearChecker();
+    std::cout << "reached line " << __LINE__ << std::endl;
 }
