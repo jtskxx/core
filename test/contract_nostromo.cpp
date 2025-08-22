@@ -1491,8 +1491,6 @@ TEST(TestContractNostromo, createFundraisingAndInvestInProjectAndClaimTokenCheck
     numberOfCreatedProject_t++;
     epochRevenu_t += 100000000;
 
-    std::cout << "reached line " << __LINE__ << std::endl;
-
     // getProjectIndexListByCreator function checker
     NOST::getProjectIndexListByCreator_output getProjectIndexListByCreator_output = nostromoTestCaseC.getProjectIndexListByCreator(registers[0]);
     for (uint32 i = 0; i < 128; i++)
@@ -1515,8 +1513,6 @@ TEST(TestContractNostromo, createFundraisingAndInvestInProjectAndClaimTokenCheck
     Ynumber = 0; Nnumber = 0;
     duplicatedUser.clear();
 
-    std::cout << "reached line " << __LINE__ << std::endl;
-
     for (const auto& user : registers)
     {
         if (duplicatedUser[user])
@@ -1538,8 +1534,6 @@ TEST(TestContractNostromo, createFundraisingAndInvestInProjectAndClaimTokenCheck
         duplicatedUser[user] = 1;
     }
     nostromoTestCaseC.getState()->voteInProjectChecker(2, Ynumber, Nnumber);
-
-    std::cout << "reached line " << __LINE__ << std::endl;
 
     utcTime.Year = 2025;
     utcTime.Month = 6;
@@ -1580,8 +1574,6 @@ TEST(TestContractNostromo, createFundraisingAndInvestInProjectAndClaimTokenCheck
     utcTime.Hour = 1;
     updateQpiTime();
 
-    std::cout << "reached line " << __LINE__ << std::endl;
-
     uint64 totalInvestedAmount_3 = 0;
     duplicatedUser.clear();
     ct = 0;
@@ -1599,6 +1591,7 @@ TEST(TestContractNostromo, createFundraisingAndInvestInProjectAndClaimTokenCheck
 
         if (ct == 4000)
         {
+
             // Phase 2 Investment
             utcTime.Year = 2025;
             utcTime.Month = 7;
@@ -1676,8 +1669,6 @@ TEST(TestContractNostromo, createFundraisingAndInvestInProjectAndClaimTokenCheck
         
         duplicatedUser[user] = 1;
     }
-
-    std::cout << "reached line " << __LINE__ << std::endl;
 
     nostromoTestCaseC.getState()->totalRaisedFundChecker(2, totalInvestedAmount_3, assetName);
 
