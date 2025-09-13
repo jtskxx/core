@@ -2273,28 +2273,22 @@ public:
 
     BEGIN_EPOCH()
     {
-        
-#ifdef NO_UEFI
-        // for unit test
-        state.mCurrentEventID = 0;
-        state.mOperationParams.wholeSharePriceInQU = 100000ULL;
-        state.mOperationParams.feePerDay = 1000;
-        state.mOperationParams.eligibleCreators.cleanup();
-        state.mOperationParams.eligibleOracles.cleanup();
-        state.mOperationParams.discountedFeeForUsers.cleanup();
-        setMemory(state.mQtryGov, 0);
-        state.mQtryGov.mOperationId = id(0, 1, 2, 3);
-#else
-        if (qpi.epoch() == 999)
+        // testnet only
+        if (qpi.epoch() == 178)
         {
-            state.mOperationParams.feePerDay = 1000;
+            state.mOperationParams.feePerDay = 11337;
             state.mOperationParams.eligibleCreators.cleanup();
             state.mOperationParams.eligibleOracles.cleanup();
-            state.mOperationParams.discountedFeeForUsers.cleanup();            
+            state.mOperationParams.discountedFeeForUsers.cleanup();
             setMemory(state.mQtryGov, 0);
-            state.mQtryGov.mOperationId = id(0, 1, 2, 3); // set later
+            state.mQtryGov.mOperationId = ID(_M, _E, _F, _K, _Y, _F, _C, _D, _X, _D, _U, _I, _L, _C, _A, _J,
+                                             _K, _O, _I, _K, _W, _Q, _A, _P, _E, _N, _J, _D, _U, _H, _S, _S,
+                                             _Y, _P, _B, _R, _W, _F, _O, _T, _L, _A, _L, _I, _L, _A, _Y, _W,
+                                             _Q, _F, _D, _S, _I, _T, _J, _E); // testnet ARB
+            state.mQtryGov.mBurnFee = 1;
+            state.mQtryGov.mOperationFee = 5; // 0.5%
+            state.mQtryGov.mShareHolderFee = 10; // 1%
         }
-#endif
     }
 
     struct END_EPOCH_locals
