@@ -88,6 +88,8 @@ public:
 
         uint64 burnedAmount;
         uint64 feePerDay;
+        uint64 wholeSharePriceInQU;
+
         id gameOperator;
     };
 
@@ -1768,7 +1770,10 @@ public:
         output.distributedShareholdersRevenue = state.mDistributedShareholdersRevenue;
 
         output.burnedAmount = state.mBurnedAmount;
+
         output.feePerDay = state.mOperationParams.feePerDay;
+        output.wholeSharePriceInQU = state.mOperationParams.wholeSharePriceInQU;
+
         output.gameOperator = state.mQtryGov.mOperationId;
     }
 
@@ -2296,6 +2301,7 @@ public:
             state.mQtryGov.mBurnFee = 1;
             state.mQtryGov.mOperationFee = 5; // 0.5%
             state.mQtryGov.mShareHolderFee = 10; // 1%
+            state.mOperationParams.wholeSharePriceInQU = 100000;
             state.mRecentActiveEvent.setAll(NULL_INDEX);
         }
     }
