@@ -2296,6 +2296,7 @@ public:
             state.mQtryGov.mBurnFee = 1;
             state.mQtryGov.mOperationFee = 5; // 0.5%
             state.mQtryGov.mShareHolderFee = 10; // 1%
+            state.mRecentActiveEvent.setAll(NULL_INDEX);
         }
     }
 
