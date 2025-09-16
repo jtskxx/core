@@ -2096,7 +2096,14 @@ public:
         if (input.option < 0 || input.option > 1) return;
         if (!state.mEventInfo.contains(input.eventId)) return;
         locals.key = MakeOrderKey(input.eventId, input.option, input.isBid);
-        locals.i = state.mABOrders.headIndex(locals.key, 0);
+        if (input.isBid)
+        {
+            locals.i = state.mABOrders.headIndex(locals.key);
+        }
+        else
+        {
+            locals.i = state.mABOrders.headIndex(locals.key, 0);
+        }
         locals.c = 0;
         if (input.isBid) locals.sign = 1;
         else locals.sign = -1;
