@@ -37,7 +37,7 @@
     <ClCompile Include="qpi_date_time.cpp" />
     <ClCompile Include="uint128.cpp" />
     <ClCompile Include="fourq.cpp" />
-    <ClCompile Include="txs_pool.cpp" />
+    <ClCompile Include="pending_txs_pool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="score_reference.h" />
